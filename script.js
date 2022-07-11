@@ -37,7 +37,7 @@ function formSubmitHandler(evt) {
 formElement.addEventListener("submit", formSubmitHandler);
 
 let rectangleButton = document.querySelector(".rectangle__button");
-function buttonLikeToggler() {
+function buttonLikeToggler() {//обработчик кнопки like
   rectangleButton.classList.remove("rectangle__button");
   rectangleButton.classList.toggle("rectangle__button_active");
   rectangleButton.classList.add("rectangle__button");

@@ -1,6 +1,6 @@
 .popup__close-btn {
   vertical-align: bottom;
-  background-color: #000000;
+  background-color: rgba(255, 255, 255, 0.01);
   border: 0;
   width: 32px;
   height: 32px;
@@ -10,6 +10,7 @@
   right: -32px;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .popup__close-btn:hover {
