@@ -5,7 +5,7 @@
   display: -ms-flexbox;
   display: flex;
   margin-top: 66px;
-  padding-bottom: 60px
+  padding-bottom: 60px;
 }
 
 @media (max-width: 908px) {
