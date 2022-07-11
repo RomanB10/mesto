@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Roman B." />
+    <title>Mesto</title>
+    <link rel="shortcut icon" href="./images/logo.svg" />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body class="root">
+    <div class="page root__section">
+      <header class="header header_margins root__section">
+        <img
+          class="header__logo"
+          src="./images/logo.svg"
+          alt="Здесь должно быть изображение Лого"
+        />
+        <div class="header__line"></div>
+      </header>
+      <main class="main">
+        <section class="profile root__section">
+          <div class="profile__image"></div>
+          <div class="profile__wrapper">
+            <div class="profile__info">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit-btn"></button>
+              <h3 class="profile__subtitle">Исследователь океана</h3>
+            </div>
+            <button class="profile__add-btn"></button>
+          </div>
+        </section>
+        <form class="popup">
+          <div class="popup__container">
+            <button class="popup__close-btn"></button>
+            <h3 class="popup__title-profile">Редактировать профиль</h3>
+            <input
+              type="text"
+              placeholder="Жак-Ив Кусто"
+              class="popup__name-input"
+            />
+            <input
+              type="text"
+              placeholder="Исследователь океана"
+              class="popup__job-input"
+            />
+            <button type="submit" class="popup__submit-btn">Сохранить</button>
+          </div>
+        </form>
+        <ul class="photo-grid root__section">
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/KarachayCherkessia.jpg "
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Карачаево-Черкесская Республика</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/AyPetri.jpg"
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Ай петри</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/ZermattSwitzerland.jpg"
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Щвейцария</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/China.jpg"
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Великая китайская стена</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/MountFuji.jpg"
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Фудзи</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+          <li class="rectangle">
+            <img
+              class="rectangle__item"
+              src="./images/KauaiHawaiiUSA.jpg"
+              alt="Здесь должно быть изображение"
+            />
+            <div class="rectangle__title">
+              <h2 class="rectangle__text">Гаваи</h2>
+              <button class="rectangle__button"></button>
+            </div>
+          </li>
+        </ul>
+      </main>
+      <footer class="footer root__section">
+        <p class="footer__author">&#169;2022 Mesto Russia</p>
+      </footer>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>

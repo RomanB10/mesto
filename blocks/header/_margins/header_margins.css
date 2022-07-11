@@ -1,0 +1,9 @@
+.header_margins {
+  padding-top: 45px;
+}
+
+@media (max-width: 320px) {
+  .header_margins {
+    padding-top: 28px;
+  }
+}

@@ -1,0 +1,27 @@
+.popup__close-btn {
+  vertical-align: bottom;
+  background-color: #000000;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url('../../../images/Close\ Icon.png');
+  position: absolute;
+  top: -35px;
+  right: -32px;
+  margin: 0;
+  padding: 0;
+}
+
+.popup__close-btn:hover {
+  opacity: .8;
+}
+
+@media  (max-width: 510px) {
+  .popup__close-btn {
+    background-image: url('../../../images/Close\ IconSmall.png');
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+}

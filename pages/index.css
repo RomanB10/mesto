@@ -1,0 +1,48 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+@import url(../blocks/root/root.css);
+@import url(../blocks/root/__section/root__section.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/_margins/header_margins.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__line/header__line.css);
+
+@import url(../blocks/main/main.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__wrapper/profile__wrapper.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__add-btn/profile__add-btn.css);
+
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__title-profile/popup__title-profile.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__name-input/popup__name-input.css);
+@import url(../blocks/popup/__job-input/popup__job-input.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+
+
+
+@import url(../blocks/photo-grid/prhoto-grid.css);
+@import url(../blocks/photo-grid/__rectangle/rectangle.css);
+@import url(../blocks/photo-grid/__rectangle/__title/rectangle__title.css);
+@import url(../blocks/photo-grid/__rectangle/__text/rectangle__text.css);
+@import url(../blocks/photo-grid/__rectangle/__button/rectangle__button.css);
+@import url(../blocks/photo-grid/__rectangle/__like/rectangle__like.css);
+@import url(../blocks/photo-grid/__rectangle/__item/rectangle__item.css);
+@import url(../blocks/photo-grid/__rectangle/__button/_active/rectangle__button_active.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__author/footer__author.css);
+
+
