@@ -1,10 +1,12 @@
 .rectangle__title {
-  min-width: 246px;
-  min-height: 23px;
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 25px 15px 31px 21px;
+  padding-left: 22px;
+  padding-right: 16px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;

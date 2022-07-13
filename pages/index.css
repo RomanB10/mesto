@@ -3,10 +3,10 @@
 
 @import url(../blocks/root/root.css);
 @import url(../blocks/root/__section/root__section.css);
+@import url(../blocks/paddings/paddings.css);
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/_margins/header_margins.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
 
@@ -31,16 +31,14 @@
 @import url(../blocks/popup/__job-input/popup__job-input.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 
-
-
 @import url(../blocks/photo-grid/prhoto-grid.css);
-@import url(../blocks/photo-grid/__rectangle/rectangle.css);
-@import url(../blocks/photo-grid/__rectangle/__title/rectangle__title.css);
-@import url(../blocks/photo-grid/__rectangle/__text/rectangle__text.css);
-@import url(../blocks/photo-grid/__rectangle/__button/rectangle__button.css);
-@import url(../blocks/photo-grid/__rectangle/__like/rectangle__like.css);
-@import url(../blocks/photo-grid/__rectangle/__item/rectangle__item.css);
-@import url(../blocks/photo-grid/__rectangle/__button/_active/rectangle__button_active.css);
+@import url(../blocks/rectangle/rectangle.css);
+@import url(../blocks/rectangle/__title/rectangle__title.css);
+@import url(../blocks/rectangle/__text/rectangle__text.css);
+@import url(../blocks/rectangle/__button/rectangle__button.css);
+@import url(../blocks/rectangle/__like/rectangle__like.css);
+@import url(../blocks/rectangle/__image/rectangle__image.css);
+@import url(../blocks/rectangle/__button/_active/rectangle__button_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__author/footer__author.css);

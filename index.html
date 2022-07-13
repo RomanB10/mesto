@@ -10,7 +10,7 @@
   </head>
   <body class="root">
     <div class="page root__section">
-      <header class="header header_margins root__section">
+      <header class="header root__section paddings">
         <img
           class="header__logo"
           src="./images/logo.svg"
@@ -34,84 +34,112 @@
           <div class="popup__container">
             <button class="popup__close-btn"></button>
             <h3 class="popup__title-profile">Редактировать профиль</h3>
-            <input
-              type="text"
-              value="Жак-Ив Кусто"
-              class="popup__name-input"
-            />
-            <input
-              type="text"
-              value="Исследователь океана"
-              class="popup__job-input"
-            />
+            <textarea class="popup__name-input">Жак-Ив Кусто</textarea>
+            <textarea class="popup__job-input">Исследователь океана</textarea>
             <button type="submit" class="popup__submit-btn">Сохранить</button>
           </div>
         </form>
         <ul class="photo-grid root__section">
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/KarachayCherkessia.jpg "
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Карачаево-Черкесская Республика</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/AyPetri.jpg"
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Ай петри</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/ZermattSwitzerland.jpg"
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Щвейцария</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/China.jpg"
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Великая китайская стена</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/MountFuji.jpg"
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Фудзи</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
           <li class="rectangle">
             <img
-              class="rectangle__item"
+              class="rectangle__image"
               src="./images/KauaiHawaiiUSA.jpg"
               alt="Здесь должно быть изображение"
             />
             <div class="rectangle__title">
               <h2 class="rectangle__text">Гаваи</h2>
-              <button class="rectangle__button"></button>
+              <button class="rectangle__button">
+                <img
+                  class="rectangle__like"
+                  src="./images/buttons/likeDisabled.svg"
+                  alt="Здесь должна быть кнопка"
+                />
+              </button>
             </div>
           </li>
         </ul>
@@ -119,7 +147,7 @@
       <footer class="footer root__section">
         <p class="footer__author">&#169;2022 Mesto Russia</p>
       </footer>
-      <script src="script.js"></script>
+      <script src="./scripts/script.js"></script>
     </div>
   </body>
 </html>

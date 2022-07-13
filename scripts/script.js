@@ -35,11 +35,3 @@ function formSubmitHandler(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener("submit", formSubmitHandler);
-
-let rectangleButton = document.querySelector(".rectangle__button");
-function buttonLikeToggler() {//обработчик кнопки like
-  rectangleButton.classList.remove("rectangle__button");
-  rectangleButton.classList.toggle("rectangle__button_active");
-  rectangleButton.classList.add("rectangle__button");
-}
-rectangleButton.addEventListener("click", buttonLikeToggler);

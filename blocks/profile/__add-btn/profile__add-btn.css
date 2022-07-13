@@ -2,20 +2,20 @@
   background-color: #000000;
   width: 150px;
   height: 50px;
-  background-image: url('../../../images/Add\ Button.png');
+  background-image: url('../../../images/buttons/AddButton.svg');
   border: 0;
   border-radius: 2px;
   padding: 0;
   margin: 0;
   cursor: pointer;
-}
+ }
 
 @media (max-width: 680px) {
   .profile__add-btn {
-    background-image: url('../../../images/Add\ Button_big.png');
+    background-image: url('../../../images/buttons/AddButtonBig.svg');
     width: 282px;
     height: 50px;
-    margin-top: 42px;
+    margin-top: 32px;
   }
 }
 

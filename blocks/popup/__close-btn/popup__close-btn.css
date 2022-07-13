@@ -1,13 +1,13 @@
 .popup__close-btn {
   vertical-align: bottom;
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: transparent;
   border: 0;
   width: 32px;
   height: 32px;
-  background-image: url('../../../images/Close\ Icon.png');
+  background-image: url('../../../images/buttons/CloseIconBig.svg');
   position: absolute;
-  top: -35px;
-  right: -32px;
+  top: -40px;
+  right: -40px;
   margin: 0;
   padding: 0;
   cursor: pointer;
@@ -19,7 +19,7 @@
 
 @media  (max-width: 510px) {
   .popup__close-btn {
-    background-image: url('../../../images/Close\ IconSmall.png');
+    background-image: url('../../../images/buttons/CloseIcon.svg');
     width: 20px;
     height: 20px;
     top: -36px;

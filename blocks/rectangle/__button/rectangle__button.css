@@ -4,11 +4,12 @@
   cursor: pointer;
   padding: 0;
   border: 0;
-  margin: 5px 5px 1px;
-  background-image: url('../../../../images/disabledLike.png');
-  background-color: #FFFFFF;
+  margin: 5px 3px 5px;
+  background-color: transparent;
 }
 
 .rectangle__button:hover {
   opacity: .8;
+  transition: .8s;
 }
+

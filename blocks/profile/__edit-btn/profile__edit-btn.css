@@ -1,11 +1,13 @@
 .profile__edit-btn{
-    display: inline-block;
-     width: 24px;
+    grid-area: profile__edit-btn;
+    /*justify-self: start;*/
+    align-self: center;
+    width: 24px;
     height: 24px;
     border: 0;
     padding: 0;
-    margin: 0;
-    background-image: url('../../../images/Edit\ Button.png');
+    margin-top: 10px;
+    background-image: url('../../../images/buttons/EditButtonBig.svg');
     background-size: cover;
     background-color: #000000;
     cursor: pointer;
@@ -15,6 +17,7 @@
     .profile__edit-btn {
       max-width: 18px;
       max-height: 18px;
+      margin-top: 2px;
     }
   }
 

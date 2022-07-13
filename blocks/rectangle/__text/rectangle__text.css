@@ -14,3 +14,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media  (max-width: 917px){
+.rectangle__text {
+  max-width: 350px;
+  }
+}
+
+@media  (max-width: 618px){
+  .rectangle__text {
+    max-width: 510px;
+    }
+  }

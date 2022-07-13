@@ -1,33 +1,30 @@
 .popup__job-input {
+  box-sizing: border-box;
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   color: #000000;
-  padding: 0;
-  width: 358px;
-  height: 27px;
+  min-width: 358px;
+  max-height: 27px;
   border: 0;
-  box-sizing: border-box;
+  padding: 0;
   border-bottom: 1px solid rgba(0, 0, 0, .20);
-  background-color: transparent;
-  margin: 30px 36px 48px;
+  margin-top: 30px;
+  margin-bottom:48px;
 }
 
 @media (max-width: 510px) {
   .popup__job-input {
-    max-width: 238px;
-    max-height: 27px;
+    min-width: 238px;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin-left: 22px;
-    margin-right: 22px;
     margin-bottom: 45px;
   }
 }
 
 .popup__job-input:focus {
-  outline-color: #fff6c5;
+  outline-color: #00f;
 }
