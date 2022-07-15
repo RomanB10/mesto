@@ -10,143 +10,167 @@
   </head>
   <body class="root">
     <div class="page root__section">
-      <header class="header root__section paddings">
+      <header class="header root__section">
         <img
           class="header__logo"
           src="./images/logo.svg"
           alt="Здесь должно быть изображение Лого"
         />
-        <div class="header__line"></div>
       </header>
       <main class="main">
         <section class="profile root__section">
-          <div class="profile__image"></div>
+          <img
+            class="profile__image"
+            src="./images/Ava.jpg"
+            alt="Здесь должно быть изображение Аватара"
+          />
           <div class="profile__wrapper">
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-btn"></button>
-              <h3 class="profile__subtitle">Исследователь океана</h3>
+              <button
+                class="profile__edit-btn"
+                type="button"
+              ></button>
+              <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button class="profile__add-btn"></button>
+            <button
+              class="profile__add-btn"
+              type="button"
+            ></button>
           </div>
         </section>
-        <form class="popup">
-          <div class="popup__container">
-            <button class="popup__close-btn"></button>
-            <h3 class="popup__title-profile">Редактировать профиль</h3>
-            <textarea class="popup__name-input">Жак-Ив Кусто</textarea>
-            <textarea class="popup__job-input">Исследователь океана</textarea>
-            <button type="submit" class="popup__submit-btn">Сохранить</button>
-          </div>
-        </form>
-        <ul class="photo-grid root__section">
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/KarachayCherkessia.jpg "
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Карачаево-Черкесская Республика</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/AyPetri.jpg"
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Ай петри</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/ZermattSwitzerland.jpg"
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Щвейцария</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/China.jpg"
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Великая китайская стена</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/MountFuji.jpg"
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Фудзи</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-          <li class="rectangle">
-            <img
-              class="rectangle__image"
-              src="./images/KauaiHawaiiUSA.jpg"
-              alt="Здесь должно быть изображение"
-            />
-            <div class="rectangle__title">
-              <h2 class="rectangle__text">Гаваи</h2>
-              <button class="rectangle__button">
-                <img
-                  class="rectangle__like"
-                  src="./images/buttons/likeDisabled.svg"
-                  alt="Здесь должна быть кнопка"
-                />
-              </button>
-            </div>
-          </li>
-        </ul>
+        <section class="content root__section">
+          <ul class="photo-grid">
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/KarachayCherkessia.png "
+                alt="Здесь должно быть изображение Карачаево-Черкесской республики"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Карачаево-Черкесская Республика</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/AyPetri.png"
+                alt="Здесь должно быть изображение горы Ай петри"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Ай петри</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/ZermattSwitzerland.png"
+                alt="Здесь должно быть изображение Швейцарской горы"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Щвейцария</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/China.png"
+                alt="Здесь должно быть изображение Великой Китайской стены"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Великая китайская стена</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/MountFuji.png"
+                alt="Здесь должно быть изображение горы Фудзи"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Фудзи</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+            <li class="rectangle">
+              <img
+                class="rectangle__image"
+                src="./images/KauaiHawaiiUSA.png"
+                alt="Здесь должно быть изображение Гаваи"
+              />
+              <div class="rectangle__title">
+                <h2 class="rectangle__text">Гаваи</h2>
+                <button
+                  class="rectangle__button"
+                  type="button"
+                  aria-label="Лайк"
+                ></button>
+              </div>
+            </li>
+          </ul>
+        </section>
       </main>
       <footer class="footer root__section">
-        <p class="footer__author">&#169;2022 Mesto Russia</p>
+        <p class="footer__author">&copy;2022 Mesto Russia</p>
       </footer>
+      <div class="popup">
+        <form
+          class="popup__container"
+          action="./scripts/script.js"
+          method="post"
+          name="form-profile"
+        >
+          <button
+            class="popup__close-btn"
+            type="button"
+          ></button>
+          <h3 class="popup__title-profile">Редактировать профиль</h3>
+          <input
+            class="popup__input popup__input_type_name"
+            type="text"
+            name="name"
+            id="name"
+            value="Жак-Ив Кусто"
+          />
+          <input
+            class="popup__input popup__input_type_job"
+            type="text"
+            name="job"
+            id="job"
+            value="Исследователь океана"
+          />
+          <button
+            type="submit"
+            class="popup__submit-btn"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
       <script src="./scripts/script.js"></script>
     </div>
   </body>

@@ -1,6 +1,5 @@
 .profile__wrapper {
   width: 760px;
-  min-height: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,6 +18,5 @@
     -ms-flex-direction: column;
     flex-direction: column;
     width: 100%;
-    min-height: 140px;
   }
 }

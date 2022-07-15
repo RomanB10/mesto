@@ -5,8 +5,8 @@
   display: flex;
   padding-left: 22px;
   padding-right: 16px;
+  padding-bottom: 25px;
   margin-top: 25px;
-  margin-bottom: 25px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;

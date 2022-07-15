@@ -1,9 +1,0 @@
-.paddings {
-  padding-top: 45px;
-}
-
-@media (max-width: 320px) {
-  .paddings {
-    padding-top: 28px;
-  }
-}

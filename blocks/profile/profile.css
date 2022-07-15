@@ -3,7 +3,6 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   max-width: 880px;
-  min-height: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +17,6 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     max-width: 282px;
-    min-height: 286px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;

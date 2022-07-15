@@ -1,8 +1,6 @@
 .photo-grid {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  max-width: 880px;
-  min-height: 744px;
   display: grid;
   display: -ms-grid;
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
@@ -13,11 +11,7 @@
   row-gap: 20px;
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-@media (max-width: 320px) {
-  .photo-grid {
-    max-width: 288px;
-    min-height: 2268px;
-  }
-}
+

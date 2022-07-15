@@ -1,6 +1,5 @@
 .footer {
   max-width: 880px;
-  min-height: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,8 +11,8 @@
 @media (max-width: 908px) {
   .footer {
     margin-left: 0;
-    margin-top: 46px;
+    margin-top: 48px;
     padding-bottom: 36px;
-    padding-left: 24px;
+    padding-left: 23px;
   }
 }
