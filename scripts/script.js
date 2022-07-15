@@ -18,7 +18,7 @@ function closeForm() {
 }
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function formSubmitHandler(evt) {
+function submitFormHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   profileTitle.textContent = nameInput.value;//присваеваем значения полей ввода
   profileSubtitle.textContent = jobInput.value;//присваеваем значения полей ввода
@@ -26,4 +26,4 @@ function formSubmitHandler(evt) {
 }
 editButton.addEventListener("click", editForm);// Прикрепляем обработчик к кнопке редактирования
 closeButton.addEventListener("click", closeForm);// Прикрепляем обработчик к кнопке закрытия
-popup.addEventListener("submit", formSubmitHandler);// Прикрепляем обработчик к форме
+popup.addEventListener("submit", submitFormHandler);// Прикрепляем обработчик к форме
