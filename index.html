@@ -27,16 +27,10 @@
           <div class="profile__wrapper">
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button
-                class="profile__edit-btn"
-                type="button"
-              ></button>
+              <button class="profile__edit-btn" type="button"></button>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button
-              class="profile__add-btn"
-              type="button"
-            ></button>
+            <button class="profile__add-btn" type="button"></button>
           </div>
         </section>
         <section class="content root__section">
@@ -138,38 +132,30 @@
         <p class="footer__author">&copy;2022 Mesto Russia</p>
       </footer>
       <div class="popup">
-        <form
-          class="popup__container"
-          action="./scripts/script.js"
-          method="post"
-          name="form-profile"
-        >
-          <button
-            class="popup__close-btn"
-            type="button"
-          ></button>
-          <h3 class="popup__title-profile">Редактировать профиль</h3>
-          <input
-            class="popup__input popup__input_type_name"
-            type="text"
-            name="name"
-            id="name"
-            value="Жак-Ив Кусто"
-          />
-          <input
-            class="popup__input popup__input_type_job"
-            type="text"
-            name="job"
-            id="job"
-            value="Исследователь океана"
-          />
-          <button
-            type="submit"
-            class="popup__submit-btn"
+        <div class="popup__container">
+          <form
+            class="popup__form"
+            action="./scripts/script.js"
+            method="post"
+            name="form-profile"
           >
-            Сохранить
-          </button>
-        </form>
+            <button class="popup__close-btn" type="button"></button>
+            <h3 class="popup__title-profile">Редактировать профиль</h3>
+            <input
+              class="popup__input popup__input_type_name"
+              type="text"
+              name="name"
+              id="name"
+            />
+            <input
+              class="popup__input popup__input_type_job"
+              type="text"
+              name="job"
+              id="job"
+            />
+            <button type="submit" class="popup__submit-btn">Сохранить</button>
+          </form>
+        </div>
       </div>
       <script src="./scripts/script.js"></script>
     </div>
