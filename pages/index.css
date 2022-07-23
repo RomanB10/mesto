@@ -26,6 +26,7 @@
 @import url(../blocks/rectangle/__title/rectangle__title.css);
 @import url(../blocks/rectangle/__text/rectangle__text.css);
 @import url(../blocks/rectangle/__button/rectangle__button.css);
+@import url(../blocks/rectangle/__button-trash/rectangle__button-trash.css);
 @import url(../blocks/rectangle/__image/rectangle__image.css);
 
 @import url(../blocks/footer/footer.css);
