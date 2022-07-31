@@ -1,6 +1,3 @@
 .popup_type_open-image {
   background-color: rgba(0, 0, 0, .9);
-  -webkit-transition: visibility 0s, opacity .5s linear;
-  -o-transition: visibility 0s, opacity .5s linear;
-  transition: visibility 0s, opacity .5s linear;
 }
