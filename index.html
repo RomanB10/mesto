@@ -47,8 +47,8 @@
             class="popup__form popup__form_type_edit-profile" action="./scripts/script.js"  method="post"  name="form-profile">
             <button class="popup__close-btn" type="button"></button>
             <h3 class="popup__title-profile">Редактировать профиль</h3>
-            <input class="popup__input popup__input_type_name" type="text" name="name"id="name"/>
-            <input class="popup__input popup__input_type_job" type="text" name="job" id="job"/>
+            <input class="popup__input popup__input_type_name" type="text" name="name"id="name" required minlength="2" maxlength="40"/>
+            <input class="popup__input popup__input_type_job" type="text" name="job" id="job" required minlength="2" maxlength="200"/>
             <button type="submit" class="popup__submit-btn">Сохранить</button>
           </form>
         </div>
@@ -58,8 +58,8 @@
           <form class="popup__form popup__form_type_add-card" action="./scripts/script.js"  method="post"  name="form-profile">
             <button class="popup__close-btn popup__close-btn_type_add-card" type="button"></button>
             <h3 class="popup__title-profile">Новое место</h3>
-            <input class="popup__input popup__input_type_place-name" type="text" name="place-name" id="place-name" placeholder="Название">
-            <input class="popup__input popup__input_type_place-image" type="text" name="place-image" id="place-image" placeholder="Ссылка на картинку">
+            <input class="popup__input popup__input_type_place-name" type="text" name="place-name" id="place-name" placeholder="Название" required>
+            <input class="popup__input popup__input_type_place-image" type="text" name="place-image" id="place-image" placeholder="Ссылка на картинку" required>
             <button type="submit" class="popup__submit-btn popup__submit-btn_type_add-card">Сохранить</button>
           </form>
         </div>
