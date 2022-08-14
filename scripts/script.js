@@ -1,15 +1,15 @@
 const root = document.querySelector(".root");
 const photoGrid = document.querySelector(".photo-grid"); // обьявили переменную списка
 const rectangleTemplate = document.querySelector("#rectangle-template").content; //обращаемся к контенту шаблона темплайт
+
 //Объявляем попапы
+const listPopup = Array.from(document.querySelectorAll(".popup"));
 const profilePopup = document.querySelector(".popup_type_edit-profile"); //Попап ПРОФАЙЛА
 const cardPopup = document.querySelector(".popup_type_add-card"); //Попап НОВОГО МЕСТА
 const imagePopup = document.querySelector(".popup_type_open-image"); //Попап отображения масштабируемой картинки
 //Объяфвляем формы
-const popupFormEditProfile = document.querySelector(
-  ".popup__form_type_edit-profile"
-); //форма ПРОФАЙЛА
-const popupFormAddCard = document.querySelector(".popup__form_type_add-card"); //форма НОВОГО МЕСТА
+const popupFormEditProfile = profilePopup.querySelector(".popup__form"); //форма ПРОФАЙЛА
+const popupFormAddCard = cardPopup.querySelector(".popup__form"); //форма НОВОГО МЕСТА
 //Объявляем переменные картинки и подписи МЕСТА
 const placeImage = document.querySelector(".popup__image-place"); //изображения места
 const placeCaption = document.querySelector(".popup__caption"); //подпись к изображению места
@@ -25,15 +25,13 @@ const placeImageInput = document.querySelector(
   ".popup__input_type_place-image"
 );
 //Объявляем кнопки
-const editButtonProfilePopup = document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА
-const closeButtonProfilePopup = document.querySelector(".popup__close-btn"); //кнопка закрытия попапа ПРОФАЙЛА
-const addButtonCardPopup = document.querySelector(".profile__add-btn"); //кнопка добавления НОВОГО МЕСТА
-const closeButtonCardPopup = document.querySelector(
+const buttonEdidPopupProfile = document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА
+const buttonClosePopupProfile = document.querySelector(".popup__close-btn"); //кнопка закрытия попапа ПРОФАЙЛА
+const buttonAddNewCard = document.querySelector(".profile__add-btn"); //кнопка добавления НОВОГО МЕСТА
+const buttonCloseNewCard = document.querySelector(
   ".popup__close-btn_type_add-card"
 ); //кнопка закрытия попапа НОВОГО МЕСТА
-const likeButton = document.querySelectorAll(".rectangle__button"); //ЛАЙК
-const trashButton = document.querySelectorAll(".rectangle__button-trash"); //КОРЗИНА
-const closeButtonImagePopup = document.querySelector(
+const buttonClosePopupImage = document.querySelector(
   ".popup__close-btn_type_open-image"
 ); //кнопка закрытия попапа масштабируемой картинки
 //6 мест по умолчанию
@@ -71,11 +69,12 @@ initialCards.forEach(function (element) {
 
 // Открытие/закрытие попапа
 function openPopup(popupElement) {
+  resetFields(popupElement);
   popupElement.classList.add("popup_opened");
-};
+}
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
-};
+}
 
 // отправка формы ПРОФАЙЛА
 function submitFormProfile(evt) {
@@ -83,14 +82,14 @@ function submitFormProfile(evt) {
   profileTitle.textContent = nameInput.value; //присваеваем значения полей ввода
   profileSubtitle.textContent = jobInput.value; //присваеваем значения полей ввода
   closePopup(profilePopup); //закрытие попапа
-};
+}
 
 //отправка формы НОВОГО МЕСТА
 function submitFormNewCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   photoGrid.prepend(createCard(placeImageInput.value, placeNameInput.value));
   closePopup(cardPopup);
-};
+}
 
 //создание новой карты с местом
 function createCard(link, name) {
@@ -120,37 +119,83 @@ function createCard(link, name) {
     openPopup(imagePopup);
     placeCaption.textContent = name;
     placeImage.src = link;
+    placeImage.alt = `Зесь должно быть изображение '${name}'`;
   });
   return rectangleElement;
-};
+}
+
+//Закрытие попапа кликом на оверлей
+function closeOverlayPopup() {
+  listPopup.forEach(function (popupItem) {
+    popupItem.addEventListener("click", function (evt) {
+      closePopup(evt.target);
+    });
+  });
+}
+//Закрытие попапа нажатием на Esc
+function closeEscPopup() {
+  root.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      console.log("нажали кнопку Escape");
+      listPopup.forEach(function (popupItem) {
+        closePopup(popupItem);
+      });
+    }
+  });
+}
+
+//Очистка полей от ошибок
+function resetFields(formElement) {
+  const error = formElement.querySelectorAll(".popup__input-error"); //очистить спан вместе с содержимым
+  error.forEach(function (error) {
+    error.classList.remove("popup__input-error_active");
+    error.textContent = "";
+  });
+
+  const input = formElement.querySelectorAll(".popup__input"); //убрать красныое подчеркиваение
+  input.forEach(function (input) {
+    input.classList.remove("popup__input_type_error");
+  });
+}
+
+//Отключение кнопки
+function disabledButton(formElement) {
+  const submit = formElement.querySelector(".popup__submit-btn");
+  submit.setAttribute("disabled", "disabled"); //отключение кнопки
+  submit.classList.add("popup__submit-btn_inactive"); // добавление класса отключенной кнопки
+}
 
 // Прикрепляем слушателя к кнопке редактирования ПРОФАЙЛА
-editButtonProfilePopup.addEventListener("click", function () {
+buttonEdidPopupProfile.addEventListener("click", function () {
   openPopup(profilePopup);
   nameInput.value = profileTitle.textContent; //заносим дынные текста из профайла в поле ввода
   jobInput.value = profileSubtitle.textContent; //заносим дынные текста из профайла в поле ввода
 });
 // Прикрепляем слушателя к кнопке закрытия попапа ПРОФАЙЛА
-closeButtonProfilePopup.addEventListener("click", function () {
+buttonClosePopupProfile.addEventListener("click", function () {
   closePopup(profilePopup);
 });
 // Прикрепляем слушателя к форме отправки ПРОФАЙЛА
 popupFormEditProfile.addEventListener("submit", submitFormProfile);
 
 // Прикрепляем обработчик к кнопке добавления КАРТОЧКИ С МЕСТОМ
-addButtonCardPopup.addEventListener("click", function () {
+buttonAddNewCard.addEventListener("click", function () {
   openPopup(cardPopup);
-  placeNameInput.value = "";
-  placeImageInput.value = "";
+  popupFormAddCard.reset(); //сбрасывает поля формы при нажатии на клавишу добавить
+  disabledButton(popupFormAddCard);
 });
 // Прикрепляем обработчик к кнопке закрытия попапа добавления КАРТОЧКИ С МЕСТОМ
-closeButtonCardPopup.addEventListener("click", function () {
+buttonCloseNewCard.addEventListener("click", function () {
   closePopup(cardPopup);
 });
 // Прикрепляем слушателя к форме отправки НОВОЙ КАРТОЧКИ С МЕСТОМ
 popupFormAddCard.addEventListener("submit", submitFormNewCard);
 
 // Прикрепляем обработчик к кнопке закрытия попапа с УВЕЛИЧЕННЫМ ИЗОБРАЖЕНИЕМ МЕСТА
-closeButtonImagePopup.addEventListener("click", function () {
+buttonClosePopupImage.addEventListener("click", function () {
   closePopup(imagePopup);
 });
+
+// Закрытие попапа кликом и Escape
+closeOverlayPopup();
+closeEscPopup();

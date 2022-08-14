@@ -13,10 +13,6 @@
   background-color: transparent;
 }
 
-.popup__input:last-of-type {
-  margin-top: 30px;
-}
-
 @media (max-width: 510px) {
   .popup__input {
     min-width: 238px;

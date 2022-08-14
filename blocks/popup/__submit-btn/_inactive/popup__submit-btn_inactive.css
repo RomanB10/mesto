@@ -1,0 +1,6 @@
+.popup__submit-btn_inactive {
+  color: #000000;
+  border: 1px solid  #000000;
+  background-color: #E5E5E5;
+  opacity: .2;
+}

@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.profile__add-btn:focus {
+  outline: none;
+}
+
 @media (max-width: 680px) {
   .profile__add-btn {
     background-image: url('../../../images/buttons/AddButtonBig.svg');
