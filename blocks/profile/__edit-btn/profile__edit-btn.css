@@ -12,6 +12,10 @@
   cursor: pointer;
 }
 
+.profile__edit-btn:focus-within {
+  outline: none;
+}
+
 @media (max-width: 680px) {
   .profile__edit-btn {
     max-width: 18px;

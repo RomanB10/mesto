@@ -34,8 +34,7 @@
           </div>
         </section>
         <section class="content root__section">
-          <ul class="photo-grid">
-          </ul>
+          <ul class="photo-grid"></ul>
         </section>
       </main>
       <footer class="footer root__section">
@@ -44,46 +43,153 @@
       <div class="popup popup_type_edit-profile">
         <div class="popup__container">
           <form
-            class="popup__form popup__form_type_edit-profile" action="./scripts/script.js"  method="post"  name="form-profile">
-            <button class="popup__close-btn" type="button"></button>
+            class="popup__form popup__form_type_edit-profile"
+            action="./scripts/script.js"
+            method="post"
+            name="formProfile"
+            novalidate
+            tabindex="0"
+          >
+            <button
+              class="popup__close-btn"
+              type="button"
+              aria-label="Закрыть"
+              tabindex="4"
+            ></button>
             <h3 class="popup__title-profile">Редактировать профиль</h3>
-            <input class="popup__input popup__input_type_name" type="text" name="name"id="name" required minlength="2" maxlength="40"/>
-            <input class="popup__input popup__input_type_job" type="text" name="job" id="job" required minlength="2" maxlength="200"/>
-            <button type="submit" class="popup__submit-btn">Сохранить</button>
+            <fieldset class="popup__form-items">
+              <div class="popup__form-item">
+                <input
+                  class="popup__input popup__input_type_name"
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Имя"
+                  required
+                  minlength="2"
+                  maxlength="40"
+                  title=" Длина поля должна быть 2 и более символов и менее или равно 40"
+                  tabindex="1"
+                />
+                <span class="name-error popup__input-error"></span>
+              </div>
+              <div class="popup__form-item">
+                <input
+                  class="popup__input popup__input_type_job"
+                  type="text"
+                  name="job"
+                  id="job"
+                  placeholder="О себе"
+                  required
+                  minlength="2"
+                  maxlength="200"
+                  title=" Длина поля должна быть 2 и более символов и менее или равно 200"
+                  tabindex="2"
+                />
+                <span class="job-error popup__input-error"></span>
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              name="submit"
+              class="popup__submit-btn"
+              tabindex="3"
+            >
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
       <div class="popup popup_type_add-card">
         <div class="popup__container popup__container_type_add-card">
-          <form class="popup__form popup__form_type_add-card" action="./scripts/script.js"  method="post"  name="form-profile">
-            <button class="popup__close-btn popup__close-btn_type_add-card" type="button"></button>
+          <form
+            class="popup__form popup__form_type_add-card"
+            action="./scripts/script.js"
+            method="post"
+            name="formAddCard"
+            novalidate
+            tabindex="0"
+          >
+            <button
+              class="popup__close-btn popup__close-btn_type_add-card"
+              type="button"
+              aria-label="Добавить карточку"
+              tabindex="4"
+            ></button>
             <h3 class="popup__title-profile">Новое место</h3>
-            <input class="popup__input popup__input_type_place-name" type="text" name="place-name" id="place-name" placeholder="Название" required>
-            <input class="popup__input popup__input_type_place-image" type="text" name="place-image" id="place-image" placeholder="Ссылка на картинку" required>
-            <button type="submit" class="popup__submit-btn popup__submit-btn_type_add-card">Сохранить</button>
+            <fieldset class="popup__form-items">
+              <div class="popup__form-item">
+                <input
+                  class="popup__input popup__input_type_place-name"
+                  type="text"
+                  name="place-name"
+                  id="placeName"
+                  placeholder="Название"
+                  required
+                  minlength="2"
+                  maxlength="30"
+                  title=" Длина поля должна быть 2 и более символов и менее или равно 30"
+                  tabindex="1"
+                />
+                <span class="placeName-error popup__input-error"></span>
+              </div>
+              <div class="popup__form-item">
+                <input
+                  class="popup__input popup__input_type_place-image"
+                  type="url"
+                  name="place-image"
+                  id="placeImage"
+                  placeholder="Ссылка на картинку"
+                  required
+                  title="Введите URL"
+                  tabindex="2"
+                />
+                <span class="placeImage-error popup__input-error"></span>
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              name="submit"
+              class="popup__submit-btn popup__submit-btn_type_add-card"
+              tabindex="3"
+            >
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
       <div class="popup popup_type_open-image">
         <div class="popup__container-image">
-           <figeure class="popup__main-illustration">
-             <button class="popup__close-btn popup__close-btn_type_open-image" type="button"></button>
-             <img class = "popup__image-place" src = "#" alt =" ">
-             <figcaption class="popup__caption"></figcaption>
-           </figeure>
+          <figeure class="popup__main-illustration">
+            <button
+              class="popup__close-btn popup__close-btn_type_open-image"
+              type="button"
+            ></button>
+            <img class="popup__image-place" src="#" alt=" " />
+            <figcaption class="popup__caption"></figcaption>
+          </figeure>
         </div>
       </div>
-      <template id = "rectangle-template">
+      <template id="rectangle-template">
         <li class="rectangle">
-          <button class="rectangle__button-trash" type="button" aria-label="Корзина"></button>
-          <img class="rectangle__image">
+          <button
+            class="rectangle__button-trash"
+            type="button"
+            aria-label="Корзина"
+          ></button>
+          <img class="rectangle__image" />
           <div class="rectangle__title">
             <h2 class="rectangle__text"></h2>
-            <button class="rectangle__button" type="button" aria-label="Лайк"></button>
+            <button
+              class="rectangle__button"
+              type="button"
+              aria-label="Лайк"
+            ></button>
           </div>
         </li>
       </template>
       <script src="./scripts/script.js" defer></script>
+      <script src="./scripts/validate.js" defer></script>
     </div>
   </body>
 </html>
