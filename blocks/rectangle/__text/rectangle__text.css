@@ -1,5 +1,4 @@
 .rectangle__text {
-  max-width: 200px;
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -15,14 +14,4 @@
   overflow: hidden;
 }
 
-@media (max-width: 917px) {
-  .rectangle__text {
-    max-width: 350px;
-  }
-}
 
-@media (max-width: 618px) {
-  .rectangle__text {
-    max-width: 510px;
-  }
-}
