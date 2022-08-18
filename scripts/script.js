@@ -28,8 +28,12 @@ const placeImageInput = document.querySelector(
 const buttonEdidPopupProfile = document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА
 const buttonAddNewCard = document.querySelector(".profile__add-btn"); //кнопка добавления НОВОГО МЕСТА
 const buttonClosePopupProfile = document.querySelector(".popup__close-btn"); //кнопка закрытия попапа ПРОФАЙЛА
-const buttonCloseNewCard = document.querySelector(".popup__close-btn_type_add-card"); //кнопка закрытия попапа НОВОГО МЕСТА
-const buttonClosePopupImage = document.querySelector(".popup__close-btn_type_open-image"); //кнопка закрытия попапа масштабируемой картинки
+const buttonCloseNewCard = document.querySelector(
+  ".popup__close-btn_type_add-card"
+); //кнопка закрытия попапа НОВОГО МЕСТА
+const buttonClosePopupImage = document.querySelector(
+  ".popup__close-btn_type_open-image"
+); //кнопка закрытия попапа масштабируемой картинки
 
 //6 мест по умолчанию
 const initialCards = [
@@ -66,13 +70,13 @@ initialCards.forEach(function (element) {
 
 // Открытие/закрытие попапа
 function openPopup(popupElement) {
-  resetFields(popupElement);//функция чистки полей
-  document.addEventListener('keydown', closeEscPopup);
+  resetFields(popupElement); //функция чистки полей
+  document.addEventListener("keydown", closeEscPopup);
   popupElement.classList.add("popup_opened");
-  closeOverlayPopup(popupElement);//функция закрытия попапа кликом на оверлей
+  closeOverlayPopup(popupElement); //функция закрытия попапа кликом на оверлей
 }
 function closePopup(popupElement) {
-  document.removeEventListener('keydown', closeEscPopup);
+  document.removeEventListener("keydown", closeEscPopup);
   popupElement.classList.remove("popup_opened");
 }
 
@@ -93,9 +97,7 @@ function submitFormNewCard(evt) {
 
 //создание новой карты с местом
 function createCard(link, name) {
-  const cardElement = cardTemplate
-    .querySelector(".rectangle")
-    .cloneNode(true);
+  const cardElement = cardTemplate.querySelector(".rectangle").cloneNode(true);
   const image = cardElement.querySelector(".rectangle__image");
   const text = cardElement.querySelector(".rectangle__text");
   const like = cardElement.querySelector(".rectangle__button");
@@ -124,24 +126,22 @@ function createCard(link, name) {
 
 //Закрытие попапа кликом на оверлей
 function closeOverlayPopup(item) {
-   item.addEventListener("click", (evt)=> {
-      if (
-        evt.target === evt.currentTarget ||
-        evt.target.classList.contains('popup__close-btn') ||
-        evt.target.classList.contains('popup__close-btn_type_add-card') ||
-        evt.target.classList.contains('popup__close-btn_type_open-image')
-     ) {
-       closePopup(item);
-     }})
-  };
+  item.addEventListener("click", (evt) => {
+    if (
+      evt.target === evt.currentTarget ||
+      evt.target.classList.contains("popup__close-btn")
+    ) {
+      closePopup(item);
+    }
+  });
+}
 //Закрытие попапа нажатием на Esc
 const closeEscPopup = (evt) => {
-  const activePopup = document.querySelector('.popup_opened');
-  if (evt.key === "Escape") {
+    if (evt.key === "Escape") {
+    const activePopup = document.querySelector(".popup_opened");
     closePopup(activePopup);
-  };
+  }
 };
-
 
 // Прикрепляем слушателя к кнопке редактирования ПРОФАЙЛА
 buttonEdidPopupProfile.addEventListener("click", function () {
@@ -162,5 +162,3 @@ buttonAddNewCard.addEventListener("click", function () {
 
 // Прикрепляем слушателя к форме отправки НОВОЙ КАРТОЧКИ С МЕСТОМ
 popupFormAddCard.addEventListener("submit", submitFormNewCard);
-
-
