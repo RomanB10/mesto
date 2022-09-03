@@ -1,16 +1,15 @@
-import {Card} from "./Card.js"
-import {FormValidator} from "./FormValidator.js";
-
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 //**записываем классы в константу здесь, чтобы работать не с классами HTML документа , а в JS
 const selectors = {
-  template: '#rectangle-template',
-  rectangle: '.rectangle',
-  image: '.rectangle__image',
-  text: '.rectangle__text',
-  buttonLike: '.rectangle__button',
-  buttonTrash: '.rectangle__button-trash'
-}
+  template: "#rectangle-template",
+  rectangle: ".rectangle",
+  image: ".rectangle__image",
+  text: ".rectangle__text",
+  buttonLike: ".rectangle__button",
+  buttonTrash: ".rectangle__button-trash",
+};
 // объявляем объект селекторов для форм
 const config = {
   formSelector: ".popup__form",
@@ -19,12 +18,17 @@ const config = {
   inactiveButtonClass: "popup__submit-btn_inactive",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
+  inputSpan: ".popup__input-error",
 };
 
 const photoGrid = document.querySelector(".photo-grid"); // обьявили переменную списка
 const cardTemplate = document.querySelector(selectors.template).content; //обращаемся к контенту шаблона темплайт
 
-const formsList = Array.from(document.querySelectorAll(".popup__form"));//получаем список форм
+const imagePopup = document.querySelector(".popup_type_open-image"); //Попап отображения масштабируемой картинки*/
+
+//Объявляем переменные картинки и подписи МЕСТА
+const placeImage = document.querySelector(".popup__image-place"); //изображения места
+const placeCaption = document.querySelector(".popup__caption"); //подпись к изображению мест
 
 //Объявляем попапы
 const profilePopup = document.querySelector(".popup_type_edit-profile"); //Попап ПРОФАЙЛА
@@ -42,7 +46,9 @@ const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 //Объявляем перемнные с полями ввода НОВОГО МЕСТА
 const placeNameInput = document.querySelector(".popup__input_type_place-name");
-const placeImageInput = document.querySelector(".popup__input_type_place-image");
+const placeImageInput = document.querySelector(
+  ".popup__input_type_place-image"
+);
 //Объявляем кнопки
 const buttonEdidPopupProfile = document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА
 const buttonAddNewCard = document.querySelector(".profile__add-btn"); //кнопка добавления НОВОГО МЕСТА
@@ -77,20 +83,30 @@ const initialCards = [
 
 // добавили 6 карточек по умолчанию из массива initialCards
 initialCards.forEach(function (data) {
-  const cardItem = new Card(data, cardTemplate, selectors, openPopup);
+  const cardItem = new Card(data, cardTemplate, selectors, handleOpenPopup);
   photoGrid.append(cardItem.createCard());
 });
+//форма созданные по классуFormValidator
+const formTypeEditProfile = new FormValidator(
+  config,
+  ".popup__form_type_edit-profile"
+);
+formTypeEditProfile.enableValidation();
+const formTypeAddCard = new FormValidator(config, ".popup__form_type_add-card");
+formTypeAddCard.enableValidation();
 
-//Вызываем валидацию всех форм
-formsList.forEach((form)=>{
-  const FormValidation = new FormValidator(config, form);
-  FormValidation.enableValidation();
-});
-
+//Открытие картинки
+function handleOpenPopup(name, link) {
+  openPopup(imagePopup);
+  placeCaption.textContent = name;
+  placeImage.src = link;
+  placeImage.alt = `Здесь должно быть изображение '${name}'`;
+}
 
 // Открытие/закрытие попапа
 function openPopup(popupElement) {
-  resetFields(popupElement); //функция чистки полей
+  formTypeEditProfile.resetFields(popupElement);
+  formTypeAddCard.resetFields(popupElement);
   document.addEventListener("keydown", closeEscPopup);
   popupElement.classList.add("popup_opened");
   closeOverlayPopup(popupElement); //функция закрытия попапа кликом на оверлей
@@ -111,7 +127,12 @@ function submitFormProfile(evt) {
 //отправка формы НОВОГО МЕСТА
 function submitFormNewCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const cardItem = new Card({link:placeImageInput.value, name:placeNameInput.value}, cardTemplate, selectors, openPopup);
+  const cardItem = new Card(
+    { link: placeImageInput.value, name: placeNameInput.value },
+    cardTemplate,
+    selectors,
+    handleOpenPopup
+  );
   photoGrid.prepend(cardItem.createCard());
   closePopup(cardPopup);
 }
@@ -129,7 +150,7 @@ function closeOverlayPopup(item) {
 }
 //Закрытие попапа нажатием на Esc
 const closeEscPopup = (evt) => {
-    if (evt.key === "Escape") {
+  if (evt.key === "Escape") {
     const activePopup = document.querySelector(".popup_opened");
     closePopup(activePopup);
   }
@@ -148,58 +169,9 @@ popupFormEditProfile.addEventListener("submit", submitFormProfile);
 // Прикрепляем обработчик к кнопке добавления КАРТОЧКИ С МЕСТОМ
 buttonAddNewCard.addEventListener("click", function () {
   openPopup(cardPopup);
-  popupFormAddCard.reset(); //сбрасывает поля формы при нажатии на клавишу добавить
-  disableButton(popupFormAddCard);
+  popupFormAddCard.reset();
+  formTypeAddCard.disableButton(popupFormAddCard);
 });
 
 // Прикрепляем слушателя к форме отправки НОВОЙ КАРТОЧКИ С МЕСТОМ
 popupFormAddCard.addEventListener("submit", submitFormNewCard);
-
-//Очистка полей от ошибок
-function resetFields(formElement) {
-  const error = formElement.querySelectorAll(".popup__input-error"); //очистить спан вместе с содержимым
-  error.forEach(function (error) {
-    error.classList.remove("popup__input-error_active");
-    error.textContent = "";
-  });
-
-  const input = formElement.querySelectorAll(".popup__input"); //убрать красное подчеркиваение
-  input.forEach(function (input) {
-    input.classList.remove("popup__input_type_error");
-  });
-}
-  //Отключение кнопки
-  function disableButton(formElement) {
-    const submit = formElement.querySelector(".popup__submit-btn");
-    submit.setAttribute("disabled", "disabled"); //отключение кнопки
-    submit.classList.add("popup__submit-btn_inactive"); // добавление класса отключенной кнопки
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
