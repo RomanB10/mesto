@@ -86,13 +86,11 @@ initialCards.forEach(function (data) {
   const cardItem = new Card(data, cardTemplate, selectors, handleOpenPopup);
   photoGrid.append(cardItem.createCard());
 });
+
 //форма созданные по классуFormValidator
-const formTypeEditProfile = new FormValidator(
-  config,
-  ".popup__form_type_edit-profile"
-);
+const formTypeEditProfile = new FormValidator(config, profilePopup);
 formTypeEditProfile.enableValidation();
-const formTypeAddCard = new FormValidator(config, ".popup__form_type_add-card");
+const formTypeAddCard = new FormValidator(config, cardPopup);
 formTypeAddCard.enableValidation();
 
 //Открытие картинки
@@ -105,8 +103,8 @@ function handleOpenPopup(name, link) {
 
 // Открытие/закрытие попапа
 function openPopup(popupElement) {
-  formTypeEditProfile.resetFields(popupElement);
-  formTypeAddCard.resetFields(popupElement);
+  formTypeEditProfile.resetFields();
+  formTypeAddCard.resetFields();
   document.addEventListener("keydown", closeEscPopup);
   popupElement.classList.add("popup_opened");
   closeOverlayPopup(popupElement); //функция закрытия попапа кликом на оверлей
@@ -170,7 +168,7 @@ popupFormEditProfile.addEventListener("submit", submitFormProfile);
 buttonAddNewCard.addEventListener("click", function () {
   openPopup(cardPopup);
   popupFormAddCard.reset();
-  formTypeAddCard.disableButton(popupFormAddCard);
+  formTypeAddCard.disableButton();
 });
 
 // Прикрепляем слушателя к форме отправки НОВОЙ КАРТОЧКИ С МЕСТОМ
