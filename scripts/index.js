@@ -1,7 +1,12 @@
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
+import { Card } from "./components/Card.js";
+import { FormValidator } from "./components/FormValidator.js";
+import { Section } from "./components/Section.js";
+import { Popup } from "./components/Popup.js";
+import { PopupWithForm } from "./components/PopupWithForm.js";
+import { PopupWithImage } from "./components/PopupWithImage.js";
+import { UserInfo } from "./components/UserInfo.js";
 
-//**записываем классы в константу здесь, чтобы работать не с классами HTML документа , а в JS
+//записываем классы в константу здесь, чтобы работать не с классами HTML документа , а в JS
 const selectors = {
   template: "#rectangle-template",
   rectangle: ".rectangle",
@@ -9,6 +14,9 @@ const selectors = {
   text: ".rectangle__text",
   buttonLike: ".rectangle__button",
   buttonTrash: ".rectangle__button-trash",
+  profilePopup: ".popup_type_edit-profile",
+  cardPopup: ".popup_type_add-card",
+  imagePopup: ".popup_type_open-image",
 };
 // объявляем объект селекторов для форм
 const config = {
@@ -22,25 +30,13 @@ const config = {
 };
 
 const photoGrid = document.querySelector(".photo-grid"); // обьявили переменную списка
-const cardTemplate = document.querySelector(selectors.template).content; //обращаемся к контенту шаблона темплайт
-
-const imagePopup = document.querySelector(".popup_type_open-image"); //Попап отображения масштабируемой картинки*/
-
-//Объявляем переменные картинки и подписи МЕСТА
-const placeImage = document.querySelector(".popup__image-place"); //изображения места
-const placeCaption = document.querySelector(".popup__caption"); //подпись к изображению мест
-
-//Объявляем попапы
-const profilePopup = document.querySelector(".popup_type_edit-profile"); //Попап ПРОФАЙЛА
-const cardPopup = document.querySelector(".popup_type_add-card"); //Попап НОВОГО МЕСТА
-
-//Объяфвляем формы
-const popupFormEditProfile = profilePopup.querySelector(".popup__form"); //форма ПРОФАЙЛА
-const popupFormAddCard = cardPopup.querySelector(".popup__form"); //форма НОВОГО МЕСТА
-
-//Объявляем перемнные с полями ввода ПРОФАЙЛА
-const nameInput = document.querySelector(".popup__input_type_name");
-const jobInput = document.querySelector(".popup__input_type_job");
+//Объявляем перемнные форм
+const popupFormEditProfile = document
+  .querySelector(selectors.profilePopup)
+  .querySelector(".popup__form"); //форма ПРОФАЙЛА
+const popupFormAddCard = document
+  .querySelector(selectors.cardPopup)
+  .querySelector(".popup__form"); //форма НОВОГО МЕСТА
 //Объявляем перемнные с текстовым содержимым ПРОФАЙЛА
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
@@ -49,7 +45,7 @@ const placeNameInput = document.querySelector(".popup__input_type_place-name");
 const placeImageInput = document.querySelector(
   ".popup__input_type_place-image"
 );
-//Объявляем кнопки
+//Объявляем перемнные кнопок
 const buttonEdidPopupProfile = document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА
 const buttonAddNewCard = document.querySelector(".profile__add-btn"); //кнопка добавления НОВОГО МЕСТА
 
@@ -80,96 +76,96 @@ const initialCards = [
     link: "./images/MountFuji.png",
   },
 ];
+//Экземпляры класса Popup
+const userPopup = new Popup({ popupSelector: selectors.profilePopup });
+const newPopup = new Popup({ popupSelector: selectors.cardPopup });
+//Экземпляр класса PopupWithImage
+const zoomPopup = new PopupWithImage({ popupSelector: selectors.imagePopup });
 
-// добавили 6 карточек по умолчанию из массива initialCards
-initialCards.forEach(function (data) {
-  const cardItem = new Card(data, cardTemplate, selectors, handleOpenPopup);
-  photoGrid.append(cardItem.createCard());
-});
+//отрисовка 6 карточек из массива по умолчанию
+const defaultCardList = new Section(
+  {
+    items: initialCards, //массив, который передаем в конструктор
+    renderer: (data) => {
+      //инструкция, которую передаем в конструктор
+      const cardItem = new Card(
+        {
+          data: data,
+          handleOpenPopup: (name, link) => {
+            zoomPopup.open(name, link);
+          },
+        },
+        selectors
+      );
+      const cardElement = cardItem.createCard(); //сохраняю в переменную результат создания одной карты
+      defaultCardList.addItem(cardElement); //вызываем метод в экземп класса и добавляю карту в конец списка
+    },
+  },
+  photoGrid //список, который передаем в конструктор
+);
+defaultCardList.renderItems(); //вызвали отрисовку всех карточек по умолчанию класса Section
 
-//форма созданные по классуFormValidator
-const formTypeEditProfile = new FormValidator(config, profilePopup);
-formTypeEditProfile.enableValidation();
-const formTypeAddCard = new FormValidator(config, cardPopup);
-formTypeAddCard.enableValidation();
+//Экземпляры класса FormValidator
+const formValidatorEditProfile = new FormValidator(
+  config,
+  popupFormEditProfile
+);
+formValidatorEditProfile.enableValidation(); //вызов метода валидации формы
+const formValidatorAddCard = new FormValidator(config, popupFormAddCard);
+formValidatorAddCard.enableValidation(); //вызов метода валидации формы
 
-//Открытие картинки
-function handleOpenPopup(name, link) {
-  openPopup(imagePopup);
-  placeCaption.textContent = name;
-  placeImage.src = link;
-  placeImage.alt = `Здесь должно быть изображение '${name}'`;
-}
+//экземпляр класса  PopupWithForm  при сабмите формы ПРОФАЙЛА
+const popupWithFormProfile = new PopupWithForm(
+  {
+    popupSelector: selectors.profilePopup,
+    submitForm: (data) => {
+      const user = new UserInfo({
+        userNameSelector: profileTitle,
+        userDescriptionSelector: profileSubtitle,
+      });
+      user.setUserInfo(data);
+    }, //методу класса setUserInfo  присваеваем объект значений инпутов
+  },
+  popupFormEditProfile
+);
+popupWithFormProfile.setEventListeners(); //навешиваем набор слушателей событий,сабмит
 
-// Открытие/закрытие попапа
-function openPopup(popupElement) {
-  formTypeEditProfile.resetFields();
-  formTypeAddCard.resetFields();
-  document.addEventListener("keydown", closeEscPopup);
-  popupElement.classList.add("popup_opened");
-  closeOverlayPopup(popupElement); //функция закрытия попапа кликом на оверлей
-}
-function closePopup(popupElement) {
-  document.removeEventListener("keydown", closeEscPopup);
-  popupElement.classList.remove("popup_opened");
-}
-
-// отправка формы ПРОФАЙЛА
-function submitFormProfile(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  profileTitle.textContent = nameInput.value; //присваеваем значения полей ввода
-  profileSubtitle.textContent = jobInput.value; //присваеваем значения полей ввода
-  closePopup(profilePopup); //закрытие попапа
-}
-
-//отправка формы НОВОГО МЕСТА
-function submitFormNewCard(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  const cardItem = new Card(
-    { link: placeImageInput.value, name: placeNameInput.value },
-    cardTemplate,
-    selectors,
-    handleOpenPopup
-  );
-  photoGrid.prepend(cardItem.createCard());
-  closePopup(cardPopup);
-}
-
-//Закрытие попапа кликом на оверлей
-function closeOverlayPopup(item) {
-  item.addEventListener("click", (evt) => {
-    if (
-      evt.target === evt.currentTarget ||
-      evt.target.classList.contains("popup__close-btn")
-    ) {
-      closePopup(item);
-    }
-  });
-}
-//Закрытие попапа нажатием на Esc
-const closeEscPopup = (evt) => {
-  if (evt.key === "Escape") {
-    const activePopup = document.querySelector(".popup_opened");
-    closePopup(activePopup);
-  }
-};
+//экземпляр класса  PopupWithForm при сабмите формы НОВОГО МЕСТА
+const popupWithFormNewCard = new PopupWithForm(
+  {
+    popupSelector: selectors.cardPopup,
+    submitForm: (data) => {
+      const cardItem = new Card(
+        {
+          data: { link: placeImageInput.value, name: placeNameInput.value },
+          handleOpenPopup: (name, link) => {
+            zoomPopup.open(name, link);
+          },
+        },
+        selectors
+      );
+      const cardElement = cardItem.createCard();
+      photoGrid.prepend(cardElement);
+    },
+  },
+  popupFormAddCard
+);
+popupWithFormNewCard.setEventListeners(); //навешиваем набор слушателей событий,сабмит
 
 // Прикрепляем слушателя к кнопке редактирования ПРОФАЙЛА
-buttonEdidPopupProfile.addEventListener("click", function () {
-  openPopup(profilePopup);
-  nameInput.value = profileTitle.textContent; //заносим дынные текста из профайла в поле ввода
-  jobInput.value = profileSubtitle.textContent; //заносим дынные текста из профайла в поле ввода
+buttonEdidPopupProfile.addEventListener("click", () => {
+  userPopup.open();
+  const user = new UserInfo({
+    userNameSelector: profileTitle,
+    userDescriptionSelector: profileSubtitle,
+  });
+  popupWithFormProfile._setInputValues(user.getUserInfo());//вернули объект со значениями textContent элементов из класса
+  formValidatorEditProfile.resetFields(); //вызываем метод очистки полей от ошибок(текстовое пояснение и красное подчеркивание)
 });
 
-// Прикрепляем слушателя к форме отправки ПРОФАЙЛА
-popupFormEditProfile.addEventListener("submit", submitFormProfile);
-
-// Прикрепляем обработчик к кнопке добавления КАРТОЧКИ С МЕСТОМ
+// Прикрепляем слушателя к кнопке добавления КАРТОЧКИ С МЕСТОМ
 buttonAddNewCard.addEventListener("click", function () {
-  openPopup(cardPopup);
-  popupFormAddCard.reset();
-  formTypeAddCard.disableButton();
+  newPopup.open();
+  formValidatorAddCard.disableButton(); //по умолчанию кнопка сабмита отключена
+  formValidatorAddCard.resetFields(); //вызываем метод очистки полей от ошибок(текстовое пояснение и красное подчеркивание)
 });
-
-// Прикрепляем слушателя к форме отправки НОВОЙ КАРТОЧКИ С МЕСТОМ
-popupFormAddCard.addEventListener("submit", submitFormNewCard);

@@ -1,6 +1,5 @@
 export class Card {
-  constructor(data, templateSelector, selectors, handleOpenPopup) {
-    this._templateSelector = templateSelector;
+  constructor({ data, handleOpenPopup }, selectors) {
     this._selectors = selectors;
     this._name = data.name;
     this._link = data.link;
@@ -8,8 +7,9 @@ export class Card {
   }
   //Приватный метод получения шаблона
   _getTemplate() {
-    const cardElement = this._templateSelector
-      .querySelector(this._selectors.rectangle)
+    const cardElement = document
+      .querySelector(this._selectors.template)
+      .content.querySelector(this._selectors.rectangle)
       .cloneNode(true);
 
     return cardElement;
@@ -31,6 +31,7 @@ export class Card {
     buttonTrash.addEventListener("click", this._handleClickTrash);
     //открытие попапа при клике на изображение
     image.addEventListener("click", () => {
+      console.log("происходит click по картинке в классе Card");
       this._handleOpenPopup(this._name, this._link);
     });
 

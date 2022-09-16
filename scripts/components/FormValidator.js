@@ -1,12 +1,12 @@
 export class FormValidator {
-  constructor(selectors, formSelector) {
-    this._formSelector = formSelector;
+  constructor(selectors, form) {
+    this._form = form;
     this._selectors = selectors;
-    this._submitButton = this._formSelector.querySelector(
+    this._submitButton = this._form.querySelector(
       this._selectors.submitButtonSelector
     );
     this._inputList = Array.from(
-      this._formSelector.querySelectorAll(this._selectors.inputSelector)
+      this._form.querySelectorAll(this._selectors.inputSelector)
     );
   }
 
@@ -65,10 +65,10 @@ export class FormValidator {
 
   //Очистка полей от ошибок
   resetFields() {
-    const error = this._formSelector.querySelectorAll(
+    const error = this._form.querySelectorAll(
       this._selectors.inputSpan
-    ); //очистить спан вместе с содержимым
-    error.forEach((error) => {
+    );
+    error.forEach((error) => {//очистить спан вместе с содержимым
       error.classList.remove(this._selectors.errorClass);
       error.textContent = "";
     });
@@ -99,7 +99,7 @@ export class FormValidator {
       //каждому полю добавим обработчик события input
       inputElement.addEventListener("input", () => {
         this._checkFieldIsValid(
-          this._formSelector,
+          this._form,
           inputElement,
           this._selectors.inputErrorClass,
           this._selectors.errorClass
