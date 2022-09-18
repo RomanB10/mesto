@@ -1,12 +1,19 @@
-import '../pages/index.css';
+import './index.css'
 
-import { Card } from "../scripts/components/Card.js";
-import { FormValidator } from "../scripts/components/FormValidator.js";
-import { Section } from "../scripts/components/Section.js";
-import { Popup } from "../scripts/components/Popup.js";
-import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
-import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
-import { UserInfo } from "../scripts/components/UserInfo.js";
+import { Card } from "../components/Card";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { Popup } from "../components/Popup.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { UserInfo } from "../components/UserInfo.js";
+
+const karachayCherkessiaImage = new URL("../images/KarachayCherkessia.jpg", import.meta.url);
+const ayPetriImage = new URL("../images/AyPetri.png", import.meta.url);
+const switzerlandImage = new URL("../images/ZermattSwitzerland.jpg", import.meta.url);
+const hawaiImage =  new URL("../images/KauaiHawaiiUSA.jpg", import.meta.url);
+const chinaImage = new URL("../images/China.jpg", import.meta.url);
+const fujiImage = new URL("../images/MountFuji.jpg", import.meta.url);
 
 //записываем классы в константу здесь, чтобы работать не с классами HTML документа , а в JS
 const selectors = {
@@ -55,34 +62,38 @@ const buttonAddNewCard = document.querySelector(".profile__add-btn"); //кноп
 const initialCards = [
   {
     name: "Карачаево-Черкесская Республика",
-    link: "./images/KarachayCherkessia.png",
+    link: karachayCherkessiaImage,
   },
   {
     name: "Ай петри",
-    link: "./images/AyPetri.png",
+    link: ayPetriImage,
   },
   {
     name: "Щвейцария",
-    link: "./images/ZermattSwitzerland.png",
+    link: switzerlandImage,
   },
   {
     name: "Гаваи",
-    link: "./images/KauaiHawaiiUSA.png",
+    link: hawaiImage,
   },
   {
     name: "Великая китайская стена",
-    link: "./images/China.png",
+    link: chinaImage,
   },
   {
     name: "Фудзи",
-    link: "./images/MountFuji.png",
+    link: fujiImage,
   },
 ];
 //Экземпляры класса Popup
 const userPopup = new Popup({ popupSelector: selectors.profilePopup });
+userPopup.setEventListeners();
 const newPopup = new Popup({ popupSelector: selectors.cardPopup });
+newPopup.setEventListeners();
 //Экземпляр класса PopupWithImage
 const zoomPopup = new PopupWithImage({ popupSelector: selectors.imagePopup });
+zoomPopup.setEventListeners();
+
 
 //отрисовка 6 карточек из массива по умолчанию
 const defaultCardList = new Section(

@@ -4,12 +4,11 @@ export class PopupWithForm extends Popup {
     super({ popupSelector });
     this._submitForm = submitForm;
     this._form = form;
+    this._inputList = this._form.querySelectorAll(".popup__input");// достаём все элементы полей
   }
 
   //приватный метод, который собирает данные всех полей формы
   _getInputValues() {
-    // достаём все элементы полей
-    this._inputList = this._form.querySelectorAll(".popup__input");
     // создаём пустой объект
     this._formValues = {};
     // добавляем в этот объект значения всех полей
@@ -22,7 +21,6 @@ export class PopupWithForm extends Popup {
 
   //приватный метод, который подставляет в значения всех полей формы приходящий объект
   _setInputValues(data) {
-    this._inputList = this._form.querySelectorAll(".popup__input");
     this._inputList.forEach((input) => {
       input.value = data[input.name]; //заносим дынные текста из профайла в поле ввода, используя объект data
     });

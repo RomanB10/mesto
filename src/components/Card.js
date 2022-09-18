@@ -31,7 +31,6 @@ export class Card {
     buttonTrash.addEventListener("click", this._handleClickTrash);
     //открытие попапа при клике на изображение
     image.addEventListener("click", () => {
-      console.log("происходит click по картинке в классе Card");
       this._handleOpenPopup(this._name, this._link);
     });
 

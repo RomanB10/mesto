@@ -13,7 +13,6 @@ export class Popup {
   open() {
     this._popup.classList.add("popup_opened"); //добавляем display: block;
     document.addEventListener("keydown", this._handleEscClose);
-    this.setEventListeners();
   }
   //метод закрытия попапа
   close() {
