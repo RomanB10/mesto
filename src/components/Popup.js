@@ -1,6 +1,6 @@
 export class Popup {
   constructor({ popupSelector }) {
-    this._popup = document.querySelector(popupSelector);
+    this._popup = document.querySelector(popupSelector);//selector Обозначает строку, по кот. можно найти элемент в DOM
   }
 
   //метод закрытия попапа при нажатии на "Escape"
@@ -22,7 +22,7 @@ export class Popup {
 
   //метод добавления слушателя при клике на затемненную область и на иконку закрытия
   setEventListeners() {
-    this._popup.addEventListener("click", (evt) => {
+    this._popup.addEventListener("mousedown", (evt) => {
       if (
         evt.target === evt.currentTarget || // закрытие по совпадению попапа и клика
         evt.target.classList.contains("popup__close-btn") // елси клик совпадает с элементом кнопки закрытия

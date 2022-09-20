@@ -1,12 +1,15 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
+  constructor({ items, renderer }, container) {
     this._initialArray = items; //массив данных карточки
-    this._container = containerSelector; //место куда будем вставлять контейнер, в '.photoGrid'
+    this._container = container; //место куда будем вставлять контейнер, в '.photoGrid'
     this._renderer = renderer; //функция отрисовки одного элемента-карточки
   }
-  //метод добавления елемента-карты в контейнер
+  //методы добавления елемента-карты в контейнер
   addItem(element) {
     this._container.append(element);
+  }
+  prependItem(element) {
+    this._container.prepend(element);
   }
   //меиод отрисовки массива карточек
   renderItems() {
