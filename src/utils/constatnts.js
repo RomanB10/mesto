@@ -48,13 +48,6 @@ export const popupFormAddCard = document
 //Объявляем перемнные с текстовым содержимым ПРОФАЙЛА
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
-//Объявляем перемнные с полями ввода НОВОГО МЕСТА
-export const placeNameInput = document.querySelector(
-  ".popup__input_type_place-name"
-);
-export const placeImageInput = document.querySelector(
-  ".popup__input_type_place-image"
-);
 //Объявляем перемнные кнопок
 export const buttonEdidPopupProfile =
   document.querySelector(".profile__edit-btn"); //кнопка редактора ПРОФАЙЛА

@@ -24,8 +24,6 @@ import {
   popupFormAddCard,
   profileTitle,
   profileSubtitle,
-  placeNameInput,
-  placeImageInput,
   buttonEdidPopupProfile,
   buttonAddNewCard,
   initialCards,
@@ -93,9 +91,9 @@ const popupWithFormNewCard = new PopupWithForm(
   {
     popupSelector: selectors.cardPopup,
     handleSubmit: (data) => {
-        const cardElement = createCard({
-        link: placeImageInput.value,
-        name: placeNameInput.value,
+      const cardElement = createCard({
+        link: Object.values(data)[1],
+        name: Object.values(data)[0],
       });
       defaultCardList.prependItem(cardElement);
     },
