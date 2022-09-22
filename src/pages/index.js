@@ -92,8 +92,8 @@ const popupWithFormNewCard = new PopupWithForm(
     popupSelector: selectors.cardPopup,
     handleSubmit: (data) => {
       const cardElement = createCard({
-        link: Object.values(data)[1],
-        name: Object.values(data)[0],
+        link: data["place-image"],
+        name: data["place-name"],
       });
       defaultCardList.prependItem(cardElement);
     },
