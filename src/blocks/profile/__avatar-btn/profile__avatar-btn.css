@@ -1,0 +1,25 @@
+.profile__avatar-btn {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  padding: 0;
+  background-image: url('../../../images/buttons/EditAvatar.svg');
+  background-size: cover;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.profile__avatar-btn:focus-within {
+  outline: none;
+}
+
+.profile__avatar-btn:hover {
+  opacity: 1;
+}
+
+@media (max-width: 680px) {
+  .profile__avatar-btn {
+    top: 42%;
+    left: 50%;
+  }
+}

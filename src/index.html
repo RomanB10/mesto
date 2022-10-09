@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Интерактивный сервис с разными локациями" />
+    <meta
+      name="description"
+      content="Интерактивный сервис с разными локациями"
+    />
     <meta name="author" content="Roman B." />
     <title>Mesto</title>
     <link rel="shortcut icon" href="<%=require('./images/logoMesto.svg')%>" />
@@ -19,11 +22,18 @@
       </header>
       <main class="main">
         <section class="profile root__section">
-          <img
-            class="profile__image"
-            src="<%=require('./images/Ava.jpg')%>"
-            alt="Здесь должно быть изображение Аватара"
-          />
+          <div class="profile__container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/Ava.jpg')%>"
+              alt="Здесь должно быть изображение Аватара"
+            />
+            <button
+              class="profile__avatar-btn"
+              type="submit"
+              name="submit"
+            ></button>
+          </div>
           <div class="profile__wrapper">
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -41,6 +51,7 @@
         <p class="footer__author">&copy;2022 Mesto Russia</p>
       </footer>
       <div class="popup popup_type_edit-profile">
+        <!-- Попап редактирования профиля -->
         <div class="popup__container">
           <form
             class="popup__form popup__form_type_edit-profile"
@@ -101,6 +112,7 @@
         </div>
       </div>
       <div class="popup popup_type_add-card">
+        <!-- Попап добавления новой карточки -->
         <div class="popup__container popup__container_type_add-card">
           <form
             class="popup__form popup__form_type_add-card"
@@ -170,6 +182,80 @@
           </figeure>
         </div>
       </div>
+      <div class="popup popup_type_confirmation">
+        <!-- Попап подтверждения удаления карточки -->
+        <div class="popup__container popup__container_type_confirmation">
+          <form
+            class="popup__form popup__form_type_confirmation"
+            action="./scripts/script.js"
+            method="post"
+            name="formСonfirmation"
+            novalidate
+            tabindex="0"
+          >
+            <button
+              class="popup__close-btn popup__close-btn_type_confirmation"
+              type="button"
+              aria-label="Удаление карточки"
+              tabindex="2"
+            ></button>
+            <h3 class="popup__title-profile">Вы уверены?</h3>
+
+            <button
+              type="submit"
+              name="submit"
+              class="popup__submit-btn popup__submit-btn_type_confirmation"
+              tabindex="1"
+            >
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_type_change-avatar">
+        <!-- Попап смены аватарки профайла -->
+        <div class="popup__container popup__container_type_change-avatar">
+          <form
+            class="popup__form popup__form_change-avatar"
+            action="./scripts/script.js"
+            method="post"
+            name="formEditAvatar"
+            novalidate
+            tabindex="0"
+          >
+            <button
+              class="popup__close-btn popup__close-btn_type_change-avatar"
+              type="button"
+              aria-label="Изменить аватар"
+              tabindex="2"
+            ></button>
+            <h3 class="popup__title-profile">Обновить аватар</h3>
+            <fieldset class="popup__form-items">
+              <div class="popup__form-item">
+                <input
+                  class="popup__input popup__input_type_change-avatar"
+                  type="url"
+                  name="avatar"
+                  id="avatar"
+                  placeholder="Ссылка на картинку"
+                  required
+                  title="Введите URL"
+                  tabindex="1"
+                />
+                <span class="avatar-error popup__input-error"></span>
+              </div>
+            </fieldset>
+            <button
+              type="submit"
+              name="submit"
+              class="popup__submit-btn popup__submit-btn_type_change-avatar"
+              tabindex="3"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
       <template id="rectangle-template">
         <li class="rectangle">
           <button
@@ -180,11 +266,14 @@
           <img class="rectangle__image" />
           <div class="rectangle__title">
             <h2 class="rectangle__text"></h2>
-            <button
-              class="rectangle__button"
-              type="button"
-              aria-label="Лайк"
-            ></button>
+            <div class="rectangle__group-like">
+              <button
+                class="rectangle__button"
+                type="button"
+                aria-label="Лайк"
+              ></button>
+              <p class="rectangle__count-likes"></p>
+            </div>
           </div>
         </li>
       </template>
