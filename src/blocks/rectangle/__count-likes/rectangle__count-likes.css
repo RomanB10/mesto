@@ -1,5 +1,5 @@
 .rectangle__count-likes {
-  display: inline;
+  display: block;
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -11,5 +11,4 @@
   text-align: center;
   min-width: 10px;
 }
-
 

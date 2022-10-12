@@ -24,21 +24,28 @@ import {
   buttonEdidAvatar,
 } from "../utils/constatnts.js";
 
+//переменная пользовательского id(текущий пользователь)
+let userId;
+
 const api = new Api(configApi);
-api
-  .getAllCards()
-  .then(function (data) {
-    defaultCardList.renderItems(data);
+//Получаем дынные с сервера(объект данных карточек, объект данных пользователя )
+Promise.all([api.getAllCards(), api.getInfoUser()])
+  .then((res) => {
+    const cardsFromServer = res[0];
+    const userInfoFromServer = res[1];
+    userId = userInfoFromServer._id; //присваивается id текущего пользователя, пришедшее с сервера
+    defaultCardList.renderItems(cardsFromServer);
+    user.setUserInfo(userInfoFromServer);
   })
-  .catch(function (err) {
+  .catch((err) => {
     console.log(err);
   });
-
-  //метод создания карточки с местом
-function createCard(data) {
+//метод создания карточки с местом
+function createCard(data, userId) {
   const card = new Card(
     {
       data: data,
+      userId: userId,
       handleOpenPopup: (data) => {
         zoomPopup.open(data);
       },
@@ -46,21 +53,21 @@ function createCard(data) {
         if (!item.isliked()) {
           api
             .addLike(item.getId())
-            .then(function (data) {
+            .then((data) => {
               item.switchLike(data);
               item.changeCountLikes(data);
             })
-            .catch(function (err) {
+            .catch((err) => {
               alert(err);
             });
         } else {
           api
             .deleteLike(item.getId())
-            .then(function (data) {
+            .then((data) => {
               item.switchLike(data);
               item.changeCountLikes(data);
             })
-            .catch(function (err) {
+            .catch((err) => {
               console.log(err);
             });
         }
@@ -74,7 +81,7 @@ function createCard(data) {
             .then(() => {
               card.removeCard();
             })
-            .catch(function (err) {
+            .catch((err) => {
               console.log(err);
             });
         });
@@ -91,7 +98,7 @@ function createCard(data) {
 const defaultCardList = new Section(
   {
     renderer: (data) => {
-      const cardElement = createCard(data); //сохраняю в переменную результат создания одной карты
+      const cardElement = createCard(data, userId); //сохраняю в переменную результат создания одной карты
       defaultCardList.addItem(cardElement); //вызываем метод в экземп класса и добавляю карту в конец списка
     },
   },
@@ -117,7 +124,7 @@ const confirmationPopup = new PopupWithSubmit(
 );
 confirmationPopup.setEventListeners();
 
-//экземпляр класса  PopupWithForm, замена изображения АВАТАРА
+//экземпляр класса  PopupWithForm, замена изображения АВАТАРА (avatar)
 const popupWithFormAvatar = new PopupWithForm(
   {
     popupSelector: selectors.avatarPopup,
@@ -128,8 +135,9 @@ const popupWithFormAvatar = new PopupWithForm(
         .changeAvatarUser(dataToServer)
         .then((dataFromServer) => {
           user.setUserInfo(dataFromServer); //методу класса setUserInfo  присваеваем объект значений инпутов
+          popupWithFormAvatar.close();
         })
-        .catch(function (err) {
+        .catch((err) => {
           console.log(err);
         })
         .finally(() => {
@@ -141,7 +149,7 @@ const popupWithFormAvatar = new PopupWithForm(
 );
 popupWithFormAvatar.setEventListeners(); //навешиваем набор слушателей событий,сабмит
 
-//экземпляр класса  PopupWithForm, обновление данных ПОЛЬЗОВАТЕЛЯ
+//экземпляр класса  PopupWithForm, обновление данных ПОЛЬЗОВАТЕЛЯ (name, job)
 const popupWithFormProfile = new PopupWithForm(
   {
     popupSelector: selectors.profilePopup,
@@ -150,10 +158,11 @@ const popupWithFormProfile = new PopupWithForm(
       popupWithFormProfile.renderLoading(true);
       api
         .editInfoUser(dataToServer)
-        .then(function (dataFromServer) {
+        .then((dataFromServer) => {
           user.setUserInfo(dataFromServer); //методу класса setUserInfo  присваеваем объект значений инпутов
+          popupWithFormProfile.close();
         })
-        .catch(function (err) {
+        .catch((err) => {
           console.log(err);
         })
         .finally(() => {
@@ -177,10 +186,11 @@ const popupWithFormNewCard = new PopupWithForm(
       popupWithFormNewCard.renderLoading(true);
       api
         .addNewCard(dataToServer)
-        .then(function (dataFromServer) {
-          defaultCardList.prependItem(createCard(dataFromServer));
+        .then((dataFromServer) => {
+          defaultCardList.prependItem(createCard(dataFromServer, userId));
+          popupWithFormNewCard.close();
         })
-        .catch(function (err) {
+        .catch((err) => {
           console.log(err);
         })
         .finally(() => {
@@ -209,14 +219,7 @@ formValidatorEditAvatar.enableValidation();
 // Прикрепляем слушателя к кнопке редактирования ПРОФАЙЛА
 buttonEdidPopupProfile.addEventListener("click", () => {
   popupWithFormProfile.open();
-  api
-    .getInfoUser()
-    .then(function (data) {
-      popupWithFormProfile.setInputValues(user.getUserInfo(data)); //вернули объект со значениями textContent элементов из класса
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  popupWithFormProfile.setInputValues(user.getUserInfo());
   formValidatorEditProfile.resetFields(); //вызываем метод очистки полей от ошибок(текстовое пояснение и красное подчеркивание)
 });
 

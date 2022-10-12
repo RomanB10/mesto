@@ -5,6 +5,9 @@
   left: 0;
   right: 0;
   bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -13,4 +16,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: visibility 0.5s, opacity .5s linear;
+  -o-transition: visibility 0.5s, opacity .5s linear;
+  transition: visibility 0.5s, opacity .5s linear;
 }

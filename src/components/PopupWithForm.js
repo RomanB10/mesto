@@ -5,7 +5,7 @@ export class PopupWithForm extends Popup {
     this._handleSubmit = handleSubmit;
     this._form = form;
     this._inputList = this._form.querySelectorAll(".popup__input"); // достаём все элементы полей
-    this._buttonSave = this._form.querySelector(".popup__submit-btn")
+    this._buttonSave = this._form.querySelector(".popup__submit-btn");
   }
 
   //приватный метод, который собирает данные всех полей формы
@@ -34,7 +34,6 @@ export class PopupWithForm extends Popup {
       //добавляем обрабочик сабмита
       evt.preventDefault(evt); // Эта строчка отменяет стандартную отправку формы.
       this._handleSubmit(this._getInputValues()); // передаем сабмиту объект полей, чтобы использовать в колбэке
-      this.close();
     });
   }
 
@@ -44,13 +43,11 @@ export class PopupWithForm extends Popup {
     this._form.reset(); //очистка формы от введенных данных
   }
 
-  renderLoading(isLoading){
-    console.log(isLoading,this._buttonSave )
-    if (isLoading){
-      this._buttonSave.textContent = "Сохранение..."
-       }
-    else{
-      this._buttonSave.textContent = "Сохранить"
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._buttonSave.textContent = "Сохранение...";
+    } else {
+      this._buttonSave.textContent = "Сохранить";
     }
-}
+  }
 }

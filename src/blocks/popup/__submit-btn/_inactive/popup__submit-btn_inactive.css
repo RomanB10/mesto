@@ -4,3 +4,7 @@
   background-color: #E5E5E5;
   opacity: .2;
 }
+
+.popup__submit-btn_inactive:hover {
+  opacity: .2;
+}

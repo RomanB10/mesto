@@ -1,8 +1,14 @@
 export class Api {
+ /* #onResponse(res){
+     res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+  }*/
   constructor(config) {
     this._url = config.url;
     this._headers = config.headers;
   }
+/*  _getResponse(res) {
+    res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+  }*/
 
   //Загрузка карточек с сервера
   getAllCards() {
@@ -10,8 +16,8 @@ export class Api {
       method: "GET",
       headers: this._headers,
     }).then((res) =>
-      res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
-    );
+    res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+  );
   }
 
   //Добавление новой карточки

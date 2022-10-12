@@ -1,6 +1,5 @@
 export class Section {
   constructor({ renderer }, container) {
-   /* this._initialArray = items; //массив данных карточки*/
     this._container = container; //место куда будем вставлять контейнер, в '.photoGrid'
     this._renderer = renderer; //функция отрисовки одного элемента-карточки
   }

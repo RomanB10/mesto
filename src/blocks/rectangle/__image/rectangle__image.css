@@ -1,5 +1,4 @@
 .rectangle__image {
-  display: block;
   min-width: 282px;
   max-height: 282px;
   width: 100%;
@@ -12,7 +11,6 @@
   border-top-left-radius: 10px;
   -o-object-position: 0% 20%;
   object-position: 0% 20%;
-
 }
 
 @media (max-height: 618px) {

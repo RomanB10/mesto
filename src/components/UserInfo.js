@@ -1,3 +1,5 @@
+import { Api} from "./Api.js";
+
 //управление отображением информации о пользователе на странице
 export class UserInfo {
   constructor({ userName, userDescription, userAvatar }) {
@@ -6,13 +8,10 @@ export class UserInfo {
     this._userAvatar = userAvatar;
   }
 
-  //метод возвращает объект с данными пользователя
-  getUserInfo(data) {
+getUserInfo() {
     const obj = {
-      name: data.name,
-      job: data.about,
-      avatar: data.avatar,
-      _id: data._id
+      name: this._userName.textContent,
+      job: this._userDescription.textContent,
     };
     return obj; //возвращает текущее значения textContent элементов из класса в виде объекта
   }
@@ -24,5 +23,10 @@ export class UserInfo {
     this._userAvatar.src = data.avatar;
     //получает объект с ключами и строковыми значениями и устанавливает их в разметку
   }
+  getUserId(){
+    console.log("this._userId в getUserId", this._userId)
+    return  this._userId
+  }
+
 }
 

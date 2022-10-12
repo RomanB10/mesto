@@ -1,3 +1,42 @@
+.profile__container{
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 .profile__container {
   position: relative;
   width: 100%;
@@ -28,4 +67,4 @@
   opacity: 0;
 }
 
-
+*/

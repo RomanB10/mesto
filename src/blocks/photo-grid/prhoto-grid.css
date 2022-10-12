@@ -4,7 +4,6 @@
   display: grid;
   display: -ms-grid;
   grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
-  grid-template-rows: repeat(auto-fit, 361px);
   -webkit-column-gap: 17px;
   -moz-column-gap: 17px;
   column-gap: 17px;
@@ -13,5 +12,6 @@
   padding: 0;
   margin: 0;
 }
+
 
 
