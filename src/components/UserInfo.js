@@ -23,10 +23,5 @@ getUserInfo() {
     this._userAvatar.src = data.avatar;
     //получает объект с ключами и строковыми значениями и устанавливает их в разметку
   }
-  getUserId(){
-    console.log("this._userId в getUserId", this._userId)
-    return  this._userId
-  }
-
 }
 
