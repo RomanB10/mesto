@@ -80,6 +80,7 @@ function createCard(data, userId) {
             .removeCard(cardId)
             .then(() => {
               card.removeCard();
+              confirmationPopup.close();
             })
             .catch((err) => {
               console.log(err);
