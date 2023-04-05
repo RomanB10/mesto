@@ -1,4 +1,5 @@
 # Проектная работа учебного курса Яндекс.Практикум: "Mesto" (спринт 5-9).
+->[Сайт](https://romanb10.github.io/mesto/index.html)<-
 
 ### Обзор
 
@@ -8,6 +9,7 @@
 * Стэк
 * Применяемые технологии
 * Статус выполнения проекта
+* Screenshot
 
 **Интро**
 * <p align="left"> Адаптивный одностраничный сайт о различных локациях с возможностью актуализации контента,созданный по макету графического редактора Figma.<a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="20" height="20"/> </a></p>
@@ -55,3 +57,24 @@
 
 **Статус выполнения проекта**
 * Завершен
+
+**Screenshot**
+  
+- Одностраничное приложение
+  ![image](https://user-images.githubusercontent.com/105459169/230109591-36045679-e9b8-4c38-80d8-5c1e8dd6415a.png)
+- Попап обновления аватара,
+  *для смены аватара необходимо кликнуть по нему*
+ ![image](https://user-images.githubusercontent.com/105459169/230110042-58087a19-d2fa-4996-b7bd-77967777f4ce.png)
+- Попап редактирования профиля,
+  *для редактирования профиля необходимо кликнуть* ![image](https://user-images.githubusercontent.com/105459169/230097338-e9fc9b1e-6999-4abb-bd2b-ae2781c4dfa9.png)
+  ![image](https://user-images.githubusercontent.com/105459169/230110311-f03067cd-6758-44dd-a0d8-966f78c8a6ce.png)
+  ![image](https://user-images.githubusercontent.com/105459169/230110506-87ee995f-40ef-499b-a2e5-322333e63caa.png)
+- Попап добавления новой карточки
+  *для добавления новой карточки необходимо кликнуть*, ![image](https://user-images.githubusercontent.com/105459169/230097610-a71c7f56-b271-4956-86e8-e4ca4b1af74f.png)
+  ![image](https://user-images.githubusercontent.com/105459169/230110785-2765fdab-6f4a-4e7b-9428-85e4d2f0d095.png)
+  ![image](https://user-images.githubusercontent.com/105459169/230110973-ee360849-2083-4841-9aea-d145119ddb6b.png)
+- Попап открытия картинки большого размера,
+  *для открытия большой картинки необходимо кликнуть по карточке с картинкой*
+  ![image](https://user-images.githubusercontent.com/105459169/230111167-536c7e89-0c65-4abc-aaec-eb2a68db4a30.png)
+
+
