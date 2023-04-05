@@ -77,4 +77,3 @@
   *для открытия большой картинки необходимо кликнуть по карточке с картинкой*
   ![image](https://user-images.githubusercontent.com/105459169/230111167-536c7e89-0c65-4abc-aaec-eb2a68db4a30.png)
 
-
